@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SONER Logo - Minimal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #121212;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .container {
+      padding: 25px 30px;
+      text-align: center;
+      background-color: #181818;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      border: 1px solid #3d3d3d;
+      width: auto;
+      display: inline-block;
+    }
+    
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: auto;
+      margin: 0;
+    }
+    
+    .logo-text {
+      font-size: 38px;
+      font-weight: 300;
+      color: #e0e0e0;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      line-height: 1;
+      position: relative;
+    }
+    
+    /* Radar circle (replacing O) */
+    .radar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #4285f4;
+      margin: 0 3px;
+      position: relative;
+      background-color: rgba(66, 133, 244, 0.05);
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(66, 133, 244, 0.5) inset;
+    }
+    
+    /* Radar concentric circles */
+    .radar::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      border: 1px solid rgba(66, 133, 244, 0.3);
+      transform: translate(-50%, -50%);
+    }
+    
+    .radar::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(66, 133, 244, 0.3);
+      transform: translate(-50%, -50%);
+    }
+    
+    /* Enhanced radar scanner - now a triangular sweep */
+    .scanner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: scan 4s linear infinite;
+      transform-origin: center;
+      pointer-events: none;
+    }
+    
+    /* Triangular sweep */
+    .scanner-beam {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 50%;
+      background: linear-gradient(90deg, rgba(66, 133, 244, 0), rgba(66, 133, 244, 0.4));
+      transform-origin: bottom left;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+    
+    /* Scanner line */
+    .scanner-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(66, 133, 244, 0.2), rgba(66, 133, 244, 1));
+      transform-origin: left center;
+    }
+    
+    /* Enhanced scanner glow */
+    .scanner-dot {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: rgba(66, 133, 244, 1);
+      box-shadow: 0 0 6px 3px rgba(66, 133, 244, 0.8);
+      transform: translateY(-50%);
+    }
+    
+    /* Data points (blips) - now synced with scanner */
+    .blip {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background-color: rgba(66, 133, 244, 0.8);
+      border-radius: 50%;
+      opacity: 0;
+      box-shadow: 0 0 4px 2px rgba(66, 133, 244, 0.4);
+    }
+    
+    .blip:nth-child(2) {
+      top: 25%;
+      left: 30%;
+      animation: blip 4s 1s infinite;
+    }
+    
+    .blip:nth-child(3) {
+      top: 65%;
+      left: 60%;
+      animation: blip 4s 2.5s infinite;
+    }
+    
+    .blip:nth-child(4) {
+      top: 40%;
+      left: 70%;
+      animation: blip 4s 3s infinite;
+    }
+    
+    .blip:nth-child(5) {
+      top: 70%;
+      left: 25%;
+      animation: blip 4s 0.5s infinite;
+    }
+    
+    .tagline {
+      color: #4285f4;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: 0.5em;
+      padding-left: 0.5em; /* Compensate for the last letter */
+      margin-top: 4px;
+    }
+    
+    @keyframes scan {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes blip {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      2% {
+        opacity: 0;
+      }
+      3% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      5% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      15% {
+        opacity: 1;
+      }
+      20% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-wrapper">
+      <h1 class="logo-text">
+        S<div class="radar">
+          <div class="scanner">
+            <div class="scanner-beam"></div>
+            <div class="scanner-line">
+              <div class="scanner-dot"></div>
+            </div>
+          </div>
+          <div class="blip"></div>
+          <div class="blip"></div>
+          <div class="blip"></div>
+          <div class="blip"></div>
+        </div>NER
+      </h1>
+      <p class="tagline">Data Intelligence</p>
+    </div>
+  </div>
+</body>
+</html>
